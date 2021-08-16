@@ -6,11 +6,7 @@ namespace WordGuessGame
     {
         static void Main(string[] args)
         {
-
             StartGame();
-            /*
-            QuestionGenerator.GenerateRandomQuestions();
-            */
         }
 
         public static void StartGame()

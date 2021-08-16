@@ -9,6 +9,7 @@ namespace WordGuessGame
         public static void ExitTheGameInstantly()
         {
             Console.WriteLine("You have exited the game");
+            Environment.Exit(0);
         }
         public static void ExitTheGameByPressingEscKey()
         {

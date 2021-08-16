@@ -12,6 +12,7 @@ namespace WordGuessGame
             var Topics = new Dictionary<int, string>();
             Topics.Add(1, "Programming");
             Topics.Add(2, "Space");
+            Topics.Add(3, "Exit the game");
             Console.WriteLine("What topic you would like to choose?");
             foreach(var item in Topics)
             {
@@ -48,6 +49,9 @@ namespace WordGuessGame
                             return p.questionAnswer;
                         }
                     }
+                    break;
+                case 3:
+                    Exit.ExitTheGameInstantly();
                     break;
                 default:
                     return "";
