@@ -8,7 +8,6 @@ namespace WordGuessGame
         {
 
             var a = TopicSelection.ChooseTheTopic();
-            Console.WriteLine(a);
             MenuNavigator.MenuNavigate(a);
             
             /*

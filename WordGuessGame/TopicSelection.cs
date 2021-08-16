@@ -26,10 +26,6 @@ namespace WordGuessGame
                                  where s.questionID == randomID
                                  select s.questionAnswer;
 
-            foreach (var i in filteredResult)
-            {
-            }
-
             switch (chosenTopic)
             {
                 case 1:
