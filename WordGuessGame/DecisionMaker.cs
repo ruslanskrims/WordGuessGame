@@ -41,5 +41,22 @@ namespace WordGuessGame
         {
             Console.WriteLine("You can choose the hint");
         }
+
+        public static int CountTheAmountOfGivenLetter(string word, char countableLetter)
+        {
+            return word.Count(letter => letter == countableLetter);
+        }
+
+        public static void ShowFirstLetterOfWord(string word)
+        {
+            char firstname_initial;
+            firstname_initial = word[0];
+            Console.WriteLine($"First letter of the word is {firstname_initial}");
+        }
+
+        public static void ShowRandomLetterInWord(string word)
+        {
+
+        }
     }
 }

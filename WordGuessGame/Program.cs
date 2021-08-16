@@ -7,12 +7,16 @@ namespace WordGuessGame
         static void Main(string[] args)
         {
 
-            var a = TopicSelection.ChooseTheTopic();
-            MenuNavigator.MenuNavigate(a);
-            
+            StartGame();
             /*
             QuestionGenerator.GenerateRandomQuestions();
             */
+        }
+
+        public static void StartGame()
+        {
+            var a = TopicSelection.ChooseTheTopic();
+            MenuNavigator.MenuNavigate(a);
         }
     }
 }
