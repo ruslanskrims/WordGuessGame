@@ -7,19 +7,23 @@ namespace WordGuessGame
 {
     public class DecisionMaker
     {
-        public static void GuessTheLetter(string a)
+        public static void GuessTheLetter(string a, bool isThereEnoughHints)
         {
-            Console.WriteLine("Enter the letter,please...");
-            char letter = (char)Console.Read();
-            bool result = a.Contains(letter);
-            if(result)
+            if (isThereEnoughHints)
             {
-                Console.WriteLine("Correct! There is such letter in the word");
-            } else
-            {
-                Console.WriteLine("Wrong! There is no such a letter in the word");
+                Console.WriteLine("Enter the letter,please...");
+                char letter = (char)Console.Read();
+                bool result = a.Contains(letter);
+                if (result)
+                {
+                    Console.WriteLine("Correct! There is such letter in the word");
+                }
+                else
+                {
+                    Console.WriteLine("Wrong! There is no such a letter in the word");
+                }
+                MenuNavigator.MenuNavigate(a);
             }
-            MenuNavigator.MenuNavigate(a);
         }
 
         public static void GuessTheWord(string a)
@@ -36,8 +40,9 @@ namespace WordGuessGame
             }
             MenuNavigator.MenuNavigate(a);
         }
-        public static void TakeAHint(int choisehint, string answerForGame, int hints)
+        public static void TakeAHint(int choisehint, string answerForGame, int hints = 0)
         {
+            bool isThereEnoughHints = Convert.ToBoolean(hints);
             bool decisionIsMade = false;
             Console.WriteLine("Choose one of the hints given below..." + System.Environment.NewLine +
                       "1) I would like to know the length of this word" + System.Environment.NewLine +
@@ -51,19 +56,19 @@ namespace WordGuessGame
             switch (choisehint)
             {
                 case 1:
-                    GetWordLength(answerForGame);
+                    GetWordLength(answerForGame, isThereEnoughHints);
                     break;
                 case 2:
-                    CountTheAmountOfGivenLetter(answerForGame);
+                    CountTheAmountOfGivenLetter(answerForGame, isThereEnoughHints);
                     break;
                 case 3:
-                    GuessTheLetter(answerForGame);
+                    GuessTheLetter(answerForGame, isThereEnoughHints);
                     break;
                 case 4:
-                    ShowFirstLetterOfWord(answerForGame);
+                    ShowFirstLetterOfWord(answerForGame, isThereEnoughHints);
                     break;
                 case 5:
-                    ShowRandomLetterInWord(answerForGame);
+                    ShowRandomLetterInWord(answerForGame, isThereEnoughHints);
                     break;
                 default:
                     break;
@@ -73,44 +78,58 @@ namespace WordGuessGame
                 Console.WriteLine("There is no decision with such number. Try again!");
                 decisionIsMade = false;
             }
-            if (hints > 0)
-            {
-                hints--;
-                Console.WriteLine($"You have {hints} hints left");
-            } else
+            if (hints <= 0)
             {
                 Console.WriteLine("You are out of hints!");
-                MenuNavigator.MenuNavigate(answerForGame);
+                MenuNavigator.MenuNavigate(answerForGame, isThereEnoughHints);
+                
+            } else
+            {
+                Console.WriteLine($"You have {hints} hints left");
+                Console.WriteLine($"7 is my {isThereEnoughHints}");
+                hints--;
             }
             DecisionMaker.TakeAHint(choisehint, answerForGame, hints);
         }
 
-        public static void GetWordLength(string word)
+        public static void GetWordLength(string word, bool ifThereIsNoHints)
         {
-            Console.WriteLine(word.Length);
+            if(ifThereIsNoHints)
+            {
+                Console.WriteLine(word.Length);
+            }
         }               
 
-        public static void CountTheAmountOfGivenLetter(string word)
+        public static void CountTheAmountOfGivenLetter(string word , bool ifThereIsNoHints)
         {
-            int amountOfSameLettersInWord;
-            Console.WriteLine("Write a letter to count it's duplication in the word");
-            char countableLetter = (char)Console.Read();
-            amountOfSameLettersInWord = word.Count(letter => letter == countableLetter);
-            Console.WriteLine($"The amount of letters in word is {amountOfSameLettersInWord} letters");
+            if (ifThereIsNoHints)
+            {
+                int amountOfSameLettersInWord;
+                Console.WriteLine("Write a letter to count it's duplication in the word");
+                char countableLetter = (char)Console.Read();
+                amountOfSameLettersInWord = word.Count(letter => letter == countableLetter);
+                Console.WriteLine($"The amount of letters in word is {amountOfSameLettersInWord} letters");
+            }
         }
 
-        public static void ShowFirstLetterOfWord(string word)
+        public static void ShowFirstLetterOfWord(string word, bool ifThereIsNoHints)
         {
-            char firstname_initial;
-            firstname_initial = word[0];
-            Console.WriteLine($"First letter of the word is {firstname_initial}");
+            if (ifThereIsNoHints)
+            {
+                char firstname_initial;
+                firstname_initial = word[0];
+                Console.WriteLine($"First letter of the word is {firstname_initial}");
+            }
         }
 
-        public static void ShowRandomLetterInWord(string word)
+        public static void ShowRandomLetterInWord(string word, bool ifThereIsNoHints)
         {
+            if (ifThereIsNoHints)
+            {
                 Random random = new Random();
                 int index = random.Next(0, word.Length);
                 Console.WriteLine($"The random letter of the word is {word[index]}");
+            }
         }
     }
 }

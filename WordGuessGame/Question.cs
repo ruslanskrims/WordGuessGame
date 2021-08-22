@@ -2,8 +2,8 @@
 {
     public class Question
     {
-        public int questionID { get; internal set; }
-        public string questionAnswer { get; internal set; }
-        public string questionMessage { get; internal set; }
+        public int QuestionId { get; internal set; }
+        public string QuestionAnswer { get; internal set; }
+        public string QuestionMessage { get; internal set; }
     }
 }

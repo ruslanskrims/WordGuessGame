@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-namespace WordGuessGame
+﻿namespace WordGuessGame
 {
     class Program
     {
@@ -11,8 +9,8 @@ namespace WordGuessGame
 
         public static void StartGame()
         {
-            var a = TopicSelection.ChooseTheTopic();
-            MenuNavigator.MenuNavigate(a);
+            var choosenTopic = TopicSelection.ChooseTheTopic();
+            MenuNavigator.MenuNavigate(choosenTopic, true);
         }
     }
 }

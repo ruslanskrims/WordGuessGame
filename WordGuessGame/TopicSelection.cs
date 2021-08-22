@@ -23,30 +23,30 @@ namespace WordGuessGame
             Random rand = new Random();
             int randomID = rand.Next(1, Collections.programmingList.Count + 1);
 
-            var filteredResult = from s in Collections.programmingList
-                                 where s.questionID == randomID
-                                 select s.questionAnswer;
+            var filteredResult = from element in Collections.programmingList
+                                 where element.QuestionId == randomID
+                                 select element.QuestionAnswer;
 
             switch (chosenTopic)
             {
                 case 1:
-                    foreach (var p in Collections.programmingList)
+                    foreach (var element in Collections.programmingList)
                     {
-                        if (p.questionID == randomID)
+                        if (element.QuestionId == randomID)
                         {
 
-                            Console.WriteLine(p.questionMessage);
-                            return p.questionAnswer;
+                            Console.WriteLine(element.QuestionMessage);
+                            return element.QuestionAnswer;
                         }
                     }
                     break;
                 case 2:
-                    foreach (var p in Collections.sovietSpaceList)
+                    foreach (var element in Collections.sovietSpaceList)
                     {
-                        if (p.questionID == randomID)
+                        if (element.QuestionId == randomID)
                         {
-                            Console.WriteLine(p.questionMessage);
-                            return p.questionAnswer;
+                            Console.WriteLine(element.QuestionMessage);
+                            return element.QuestionAnswer;
                         }
                     }
                     break;
